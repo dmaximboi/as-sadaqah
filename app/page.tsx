@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, HeartHandshake, Landmark, CircleCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, HeartHandshake, Landmark, BookOpen, CircleCheck, Sparkles } from "lucide-react";
 
 const highlights = [
   { title: "Verified mosques", text: "Know the organisation and leadership behind the appeal.", icon: Landmark },
