@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getAuth, isAuthConfigured } from "@/lib/auth/server";
+import { SignOutButton } from "./sign-out-button";
 
 export const dynamic = "force-dynamic";
 
@@ -9,7 +10,7 @@ export default async function DashboardPage() {
   if (!session || !user) redirect("/auth/sign-in");
   return (
     <main className="dashboard-shell">
-      <div className="dashboard-top"><a href="/" className="brand"><span className="brand-mark">ص</span><span>as sadaqah<small>YOUR COMMUNITY GIVING SPACE</small></span></a><a href="/auth/sign-out" className="text-link">Sign out →</a></div>
+      <div className="dashboard-top"><a href="/" className="brand"><span className="brand-mark">ص</span><span>as sadaqah<small>YOUR COMMUNITY GIVING SPACE</small></span></a><SignOutButton /></div>
       <section className="dashboard-welcome">
         <div className="eyebrow">Your account</div>
         <h1>Assalamu alaikum, <em>{user.name || user.email}</em></h1>
