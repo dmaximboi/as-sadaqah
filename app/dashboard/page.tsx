@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth/server";
+import { getAuth, isAuthConfigured } from "@/lib/auth/server";
 
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
-  const { session, user } = await auth.getSession();
+  if (!isAuthConfigured()) redirect("/auth/sign-in");
+  const { session, user } = await getAuth().getSession();
   if (!session || !user) redirect("/auth/sign-in");
   return (
     <main className="dashboard-shell">
