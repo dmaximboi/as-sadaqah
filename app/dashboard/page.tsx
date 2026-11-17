@@ -6,8 +6,10 @@ export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   if (!isAuthConfigured()) redirect("/auth/sign-in");
-  const { session, user } = await getAuth().getSession();
-  if (!session || !user) redirect("/auth/sign-in");
+  const { data, error } = await getAuth().getSession();
+  const session = data?.session;
+  const user = data?.user;
+  if (error || !session || !user) redirect("/auth/sign-in");
   return (
     <main className="dashboard-shell">
       <div className="dashboard-top"><a href="/" className="brand"><span className="brand-mark">ص</span><span>as sadaqah<small>YOUR COMMUNITY GIVING SPACE</small></span></a><SignOutButton /></div>
